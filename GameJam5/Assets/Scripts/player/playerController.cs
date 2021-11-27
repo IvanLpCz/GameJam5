@@ -33,11 +33,16 @@ public class playerController : MonoBehaviour
     public int side = 1;
 
     [Space]
+    [Header("GameObjects")]
+    public Transform body;
+
+    [Space]
     [Header("Polish")]
     public ParticleSystem dashParticle;
     public ParticleSystem jumpParticle;
     public ParticleSystem wallJumpParticle;
     public ParticleSystem slideParticle;
+
 
     void Start()
     {
@@ -55,6 +60,7 @@ public class playerController : MonoBehaviour
         Vector2 dir = new Vector2(x, y);
 
         Walk(dir);
+        print(dir);
         //anim.SetHorizontalMovement(x, y, rb.velocity.y);
 
         if (coll.onWall && Input.GetButton("Fire3") && canMove)
@@ -146,7 +152,6 @@ public class playerController : MonoBehaviour
             side = -1;
             //anim.Flip(side);
         }
-
 
     }
 
@@ -256,6 +261,15 @@ public class playerController : MonoBehaviour
         else
         {
             rb.velocity = Vector2.Lerp(rb.velocity, (new Vector2(dir.x * speed, rb.velocity.y)), wallJumpLerp * Time.deltaTime);
+        }
+
+        if(dir.x < 0)
+        { 
+            body.rotation = new Quaternion(body.rotation.x, 180, body.rotation.z, body.rotation.w);
+        }
+        else if(dir.x >= 0)
+        {
+            body.rotation = new Quaternion(body.rotation.x, 0, body.rotation.z, body.rotation.w); ;
         }
     }
 
