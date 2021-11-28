@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8202117001397752686}
   - component: {fileID: 6609695682341173728}
   - component: {fileID: -4906541190046953397}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: bullettest
   m_TagString: bulletTest
   m_Icon: {fileID: 0}
@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletSpeed: 50
-  angularVelocity: 10
+  angularVelocity: 1
 --- !u!61 &6609695682341173728
 BoxCollider2D:
   m_ObjectHideFlags: 0

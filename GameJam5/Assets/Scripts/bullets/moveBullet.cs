@@ -21,7 +21,13 @@ public class moveBullet : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        gameObject.SetActive(false);
+        if (collision.gameObject.CompareTag("deflect"))
+        {
+            rb.AddForce(transform.right * -bulletSpeed * 2, ForceMode2D.Impulse);
+        }
+        else
+        {
+            gameObject.SetActive(false);
+        }      
     }
-
 }
