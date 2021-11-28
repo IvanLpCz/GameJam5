@@ -60,7 +60,6 @@ public class playerController : MonoBehaviour
         Vector2 dir = new Vector2(x, y);
 
         Walk(dir);
-        print(dir);
         //anim.SetHorizontalMovement(x, y, rb.velocity.y);
 
         if (coll.onWall && Input.GetButton("Fire3") && canMove)
