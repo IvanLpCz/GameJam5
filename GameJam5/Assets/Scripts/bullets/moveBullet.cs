@@ -4,15 +4,24 @@ using UnityEngine;
 
 public class moveBullet : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    Rigidbody2D rb;
+    public float bulletSpeed = 50f;
+    public float angularVelocity = 10f;
+
+    private void Awake()
     {
-        
+        rb = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnEnable()
     {
-        
+        rb.velocity = Vector2.zero;
+        rb.angularVelocity = angularVelocity;
+        rb.AddForce(transform.right * bulletSpeed, ForceMode2D.Impulse);
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        gameObject.SetActive(false);
+    }
+
 }
