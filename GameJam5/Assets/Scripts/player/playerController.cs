@@ -120,7 +120,7 @@ public class playerController : MonoBehaviour
                 WallJump();
         }
 
-        if (Input.GetButtonDown("Fire1") && !hasDashed)
+        if (Input.GetButtonDown("Fire2") && !hasDashed)
         {
             if (xRaw != 0 || yRaw != 0)
                 Dash(xRaw, yRaw);

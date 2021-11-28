@@ -5509,14 +5509,14 @@ MonoBehaviour:
   jumpForce: 12
   slideSpeed: 1
   wallJumpLerp: 5
-  dashSpeed: 40
+  dashSpeed: 30
   canMove: 1
   wallGrab: 0
   wallJumped: 0
   wallSlide: 0
   isDashing: 0
   side: 1
-  body: {fileID: 1741572887}
+  body: {fileID: 1741572888}
   dashParticle: {fileID: 253334247}
   jumpParticle: {fileID: 253334247}
   wallJumpParticle: {fileID: 253334247}
