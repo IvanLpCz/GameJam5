@@ -6,6 +6,7 @@ TagManager:
   tags:
   - bulletTest
   - deflect
+  - breakableWall
   layers:
   - Default
   - TransparentFX
