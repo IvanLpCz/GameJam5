@@ -5965,6 +5965,7 @@ GameObject:
   - component: {fileID: 827864666}
   - component: {fileID: 827864665}
   - component: {fileID: 827864664}
+  - component: {fileID: 827864669}
   m_Layer: 3
   m_Name: testShoot
   m_TagString: Untagged
@@ -6098,6 +6099,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &827864669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 827864663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc5a280a5c84bca4fbc4e4c7bec7521c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rangeDetect: 20
+  attackRange: 15
+  fireRateMin: 0.5
+  fireRateMax: 2
+  aimPos: {fileID: 1062574175}
+  target: {fileID: 796158524}
 --- !u!1 &886792590
 GameObject:
   m_ObjectHideFlags: 0
