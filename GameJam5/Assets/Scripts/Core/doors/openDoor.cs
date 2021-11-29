@@ -8,6 +8,9 @@ public class openDoor : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        doorAnimator.SetTrigger("open");
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            doorAnimator.SetTrigger("open");
+        }   
     }
 }

@@ -9,14 +9,6 @@ public class breakWalls : MonoBehaviour
         if (collision.gameObject.CompareTag("breakableWall"))
         {
             collision.gameObject.SetActive(false);
-            print("wallbreakable hit");
-        }
-    }
-    private void OnCollisionStay2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("breakableWall"))
-        {
-            collision.gameObject.SetActive(false);
         }
     }
 }
