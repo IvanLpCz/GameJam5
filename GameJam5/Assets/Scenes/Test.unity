@@ -5501,7 +5501,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 635336641}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -6.54, y: 0.34, z: 17.029413}
+  m_LocalPosition: {x: 0.02, y: 0.34, z: 17.029413}
   m_LocalScale: {x: 52.634865, y: 15.05, z: 1}
   m_Children: []
   m_Father: {fileID: 1410725873}
@@ -5864,7 +5864,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 796158524}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.76, y: -4.16, z: 0}
+  m_LocalPosition: {x: -12.46, y: -4.16, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1741572888}
@@ -5967,7 +5967,7 @@ GameObject:
   - component: {fileID: 827864664}
   - component: {fileID: 827864669}
   m_Layer: 3
-  m_Name: testShoot
+  m_Name: testEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6091,14 +6091,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 827864663}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -13.35, y: -4.26, z: 0}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 12.31, y: -4.26, z: 0}
   m_LocalScale: {x: -5.9304447, y: 15.050004, z: 1}
   m_Children:
   - {fileID: 1062574175}
   m_Father: {fileID: 0}
   m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!114 &827864669
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6113,8 +6113,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rangeDetect: 20
   attackRange: 15
-  fireRateMin: 0.5
-  fireRateMax: 2
+  fireRateMin: 1
+  fireRateMax: 3
   aimPos: {fileID: 1062574175}
   target: {fileID: 796158524}
 --- !u!1 &886792590
@@ -6458,7 +6458,7 @@ GameObject:
   - component: {fileID: 1062574175}
   - component: {fileID: 1062574176}
   m_Layer: 3
-  m_Name: testShoot (1)
+  m_Name: testShoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

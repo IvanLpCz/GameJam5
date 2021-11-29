@@ -17,8 +17,10 @@ public class IA : MonoBehaviour
    
     private bool inRange;
     private bool movingToTarget;
+    private bool hasShoot;
 
-
+    private float timeSinceLastAttack;
+    private float fireRate;
 
     private Vector3 guardPosition;
 
@@ -29,36 +31,41 @@ public class IA : MonoBehaviour
 
     private void Update()
     {
+        timeSinceLastAttack += Time.deltaTime;
         if (InAttackRangeOfPlayer())
         {
             movingToTarget = true;
+        }
+        else
+        {
+            BackToNormal();
+        }
+        if (GetIsInRange())
+        {
             inRange = true;
         }
         else
         {
             inRange = false;
-            BackToNormal();
         }
         if (inRange)
         {
-            GetIsInRange();
             Attack();
+        }
+        if (!hasShoot)
+        {
+            fireRate = Random.Range(fireRateMin, fireRateMax);
         }
     }
 
     private void Attack()
     {
-        StartCoroutine(shoot());
-    }
-    IEnumerator shoot()
-    {
-        float fireRate;
-        fireRate = Random.Range(fireRateMin, fireRateMax);
-        yield return new WaitForSeconds(fireRate);
-        
-        print("cadencia" + fireRate);
-
-        PoolBullet();
+        hasShoot = true;
+        print(fireRate);
+        if (timeSinceLastAttack > fireRate)
+        {
+            PoolBullet();
+        }
     }
 
     private void PoolBullet()
@@ -71,6 +78,8 @@ public class IA : MonoBehaviour
             bullet.transform.rotation = aimPos.rotation;
             bullet.SetActive(true);
         }
+        timeSinceLastAttack = 0f;
+        hasShoot = false;
     }
 
     private bool InAttackRangeOfPlayer()
@@ -89,9 +98,9 @@ public class IA : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, attackRange);
         Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, attackRange);
+        Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, rangeDetect);
 
     }
