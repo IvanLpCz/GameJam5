@@ -9,6 +9,8 @@ public class IA : MonoBehaviour
     [SerializeField] float rangeDetect = 20f;
     [SerializeField] float attackRange = 15f;
     [SerializeField] float fireRateMin, fireRateMax;
+    [SerializeField] float speed = 20f;
+    public string bulletTag;
 
     [Space]
     [Header("transforms")]
@@ -16,17 +18,21 @@ public class IA : MonoBehaviour
     public GameObject target;
    
     private bool inRange;
-    private bool movingToTarget;
+    private bool loockinFor;
     private bool hasShoot;
+
+    private Rigidbody2D rb;
 
     private float timeSinceLastAttack;
     private float fireRate;
+    private float distanceToPlayer;
 
     private Vector3 guardPosition;
 
     private void Start()
     {
         guardPosition = transform.position;
+        rb = GetComponent<Rigidbody2D>();
     }
 
     private void Update()
@@ -34,7 +40,8 @@ public class IA : MonoBehaviour
         timeSinceLastAttack += Time.deltaTime;
         if (InAttackRangeOfPlayer())
         {
-            movingToTarget = true;
+            loockinFor = true;
+            MovingToTarget();
         }
         else
         {
@@ -58,6 +65,12 @@ public class IA : MonoBehaviour
         }
     }
 
+    private void MovingToTarget()
+    {
+        rb.velocity = new Vector2(rb.velocity.x * speed, rb.velocity.y);
+        print("distance to target" + distanceToPlayer);
+    }
+
     private void Attack()
     {
         hasShoot = true;
@@ -70,7 +83,7 @@ public class IA : MonoBehaviour
 
     private void PoolBullet()
     {
-        GameObject bullet = poolling.SharedInstance.GetPooledObject("bulletTest");
+        GameObject bullet = poolling.SharedInstance.GetPooledObject(bulletTag);
 
         if (bullet != null)
         {
@@ -84,7 +97,7 @@ public class IA : MonoBehaviour
 
     private bool InAttackRangeOfPlayer()
     {
-        float distanceToPlayer = Vector3.Distance(target.transform.position, transform.position);
+        distanceToPlayer = Vector3.Distance(target.transform.position, transform.position);
         return distanceToPlayer < rangeDetect;
     }
     private bool GetIsInRange()
