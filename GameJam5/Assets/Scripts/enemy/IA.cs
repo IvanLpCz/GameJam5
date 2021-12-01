@@ -52,7 +52,6 @@ public class IA : MonoBehaviour
         if (InAttackRangeOfPlayer() && !coll.onRightWall && !coll.onLeftWall)
         {
             loockinFor = true;
-            checkRotation(playerIsRight);
         }
         else
         {
@@ -79,6 +78,7 @@ public class IA : MonoBehaviour
         if (loockinFor)
         {
             MovingToTarget();
+            checkRotation();
         }
     }
 
@@ -118,7 +118,7 @@ public class IA : MonoBehaviour
         return distanceToPlayer < rangeDetect;
     }
 
-    private void checkRotation(Vector3 playerIsRight)
+    private void checkRotation()
     {
         if (playerIsRight.x < 0)
         {
