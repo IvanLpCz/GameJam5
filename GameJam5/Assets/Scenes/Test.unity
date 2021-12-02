@@ -6267,6 +6267,7 @@ MonoBehaviour:
   bulletTag: bulletTest
   aimPos: {fileID: 1062574175}
   target: {fileID: 796158524}
+  isAlive: 0
 --- !u!114 &827864670
 MonoBehaviour:
   m_ObjectHideFlags: 0

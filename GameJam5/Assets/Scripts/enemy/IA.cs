@@ -19,12 +19,17 @@ public class IA : MonoBehaviour
     [Header("transforms")]
     public Transform aimPos;
     public GameObject target;
+
+    [Space]
+    [Header("liveOrNot")]
+    public bool isAlive;
    
     private bool inRange;
     private bool lookinFor;
     private bool hasShoot;
 
     private Rigidbody2D rb;
+    private BoxCollider2D boxCollider;
 
     private float timeSinceLastAttack;
     private float fireRate;
@@ -40,11 +45,16 @@ public class IA : MonoBehaviour
 
     private void Start()
     {
+        isAlive = true;
         guardPosition = transform.position;
         rb = GetComponent<Rigidbody2D>();
+        boxCollider = GetComponent<BoxCollider2D>();
         wayPoint = GameObject.Find("wayPoint");
         coll = GetComponent<collisions>();
         body = GetComponentInChildren<Transform>();
+
+
+        boxCollider.enabled = true;
     }
 
     private void Update()
@@ -62,7 +72,7 @@ public class IA : MonoBehaviour
             lookinFor = false;
             StartCoroutine(suspiciousBehaviour());
         }
-        if (GetIsInRange())
+        if (GetIsInRange() && isAlive)
         {
             inRange = true;
             lookinFor = false;
@@ -72,7 +82,7 @@ public class IA : MonoBehaviour
         {
             inRange = false;
         }
-        if (inRange)
+        if (inRange && isAlive)
         {
             Attack();
         }
@@ -80,7 +90,7 @@ public class IA : MonoBehaviour
         {
             fireRate = Random.Range(fireRateMin, fireRateMax);
         }
-        if (lookinFor)
+        if (lookinFor && isAlive)
         {
             MovingToTarget();
             checkRotation();
@@ -96,7 +106,7 @@ public class IA : MonoBehaviour
     private void Attack()
     {
         hasShoot = true;
-        if (timeSinceLastAttack > fireRate)
+        if (timeSinceLastAttack > fireRate && isAlive)
         {
             PoolBullet();
         }
@@ -178,5 +188,23 @@ public class IA : MonoBehaviour
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, rangeDetect);
 
+    }
+    IEnumerator dying()
+    {
+
+        yield return new WaitForSeconds(1.5f);
+        gameObject.SetActive(false);
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        isAlive = false;
+        StartCoroutine(dying());
+        boxCollider.enabled = false;
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        isAlive = false;
+        StartCoroutine(dying());
+        boxCollider.enabled = false;
     }
 }
