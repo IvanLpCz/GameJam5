@@ -5400,7 +5400,7 @@ GameObject:
   - component: {fileID: 277547243}
   - component: {fileID: 277547242}
   m_Layer: 10
-  m_Name: breakableWall (1)
+  m_Name: IALimit
   m_TagString: breakableWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6223,13 +6223,13 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 1
   m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 2
 --- !u!4 &827864668
 Transform:
   m_ObjectHideFlags: 0
@@ -6238,7 +6238,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 827864663}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 12.31, y: -4.26, z: 0}
+  m_LocalPosition: {x: 11.67, y: -4.26, z: 0}
   m_LocalScale: {x: -5.9304447, y: 15.050004, z: 1}
   m_Children:
   - {fileID: 1272683732}
@@ -6257,11 +6257,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc5a280a5c84bca4fbc4e4c7bec7521c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rangeDetect: 15
-  attackRange: 10
+  rangeDetect: 20
+  attackRange: 15
   fireRateMin: 1
   fireRateMax: 3
   speed: 5
+  speedGuard: 3
+  suspiciousTime: 2
   bulletTag: bulletTest
   aimPos: {fileID: 1062574175}
   target: {fileID: 796158524}

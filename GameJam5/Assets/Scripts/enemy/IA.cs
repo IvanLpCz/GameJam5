@@ -11,6 +11,8 @@ public class IA : MonoBehaviour
     [SerializeField] float attackRange = 15f;
     [SerializeField] float fireRateMin, fireRateMax;
     [SerializeField] float speed = 20f;
+    [SerializeField] float speedGuard = 15f;
+    [SerializeField] float suspiciousTime = 2f;
     public string bulletTag;
 
     [Space]
@@ -19,19 +21,19 @@ public class IA : MonoBehaviour
     public GameObject target;
    
     private bool inRange;
-    private bool loockinFor;
+    private bool lookinFor;
     private bool hasShoot;
-    private bool canWalk;
 
     private Rigidbody2D rb;
 
     private float timeSinceLastAttack;
     private float fireRate;
     private float distanceToPlayer;
+    private float playerIsRight;
+    private float spawnPointIsRight;
 
     private Vector3 wayPointPos;
     private Vector3 guardPosition;
-    private Vector3 playerIsRight;
 
     private GameObject wayPoint;
     private Transform body;
@@ -48,20 +50,23 @@ public class IA : MonoBehaviour
     private void Update()
     {
         timeSinceLastAttack += Time.deltaTime;
-        playerIsRight = (target.transform.position - transform.position);
-        if (InAttackRangeOfPlayer() && !coll.onRightWall && !coll.onLeftWall)
+        playerIsRight = (target.transform.position.x - transform.position.x);
+        spawnPointIsRight = (guardPosition.x - transform.position.x);
+        if (InAttackRangeOfPlayer() && !coll.onGround && !coll.onLeftWall)
         {
-            loockinFor = true;
+            lookinFor = true;
+            StopCoroutine(suspiciousBehaviour());
         }
         else
         {
-            BackToNormal();
-            loockinFor = false;
+            lookinFor = false;
+            StartCoroutine(suspiciousBehaviour());
         }
         if (GetIsInRange())
         {
             inRange = true;
-            loockinFor = false;
+            lookinFor = false;
+            checkRotation();
         }
         else
         {
@@ -75,7 +80,7 @@ public class IA : MonoBehaviour
         {
             fireRate = Random.Range(fireRateMin, fireRateMax);
         }
-        if (loockinFor)
+        if (lookinFor)
         {
             MovingToTarget();
             checkRotation();
@@ -85,8 +90,7 @@ public class IA : MonoBehaviour
     private void MovingToTarget()
     {
         wayPointPos = new Vector3(wayPoint.transform.position.x, transform.position.y, wayPoint.transform.position.z);
-        transform.position = Vector2.MoveTowards(transform.position, wayPoint.transform.position, speed * Time.deltaTime);
-        print("distance to target" + distanceToPlayer);
+        transform.position = Vector2.MoveTowards(transform.position, wayPointPos, speed * Time.deltaTime);
     }
 
     private void Attack()
@@ -120,13 +124,13 @@ public class IA : MonoBehaviour
 
     private void checkRotation()
     {
-        if (playerIsRight.x < 0)
+        if (playerIsRight >= 0)
         {
-            new Quaternion(body.rotation.x, 180, body.rotation.z, body.rotation.w);
+            body.transform.rotation = new Quaternion(body.rotation.x, 180, body.rotation.z, body.rotation.w);
         }
-        else if (playerIsRight.x >= 0)
+        else if (playerIsRight < 0)
         {
-            new Quaternion(body.rotation.x, 0, body.rotation.z, body.rotation.w);
+            body.transform.rotation = new Quaternion(body.rotation.x, 0, body.rotation.z, body.rotation.w);
         }
     }
 
@@ -136,7 +140,35 @@ public class IA : MonoBehaviour
     }
     private void BackToNormal()
     {
-        Vector3 nextPosition = guardPosition;
+        if (!lookinFor && !inRange)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, guardPosition, speedGuard * Time.deltaTime);
+        }        
+    }
+    IEnumerator suspiciousBehaviour()
+    {
+        yield return new WaitForSeconds(suspiciousTime);
+        if (lookinFor || inRange)
+        {
+            yield break;
+        }
+        BackToNormal();
+        RotateSpawn();
+    }
+
+    private void RotateSpawn()
+    {
+        if (!lookinFor && !inRange)
+        {
+            if (spawnPointIsRight >= 0)
+            {
+                body.transform.rotation = new Quaternion(body.rotation.x, 180, body.rotation.z, body.rotation.w);
+            }
+            else if (spawnPointIsRight < 0)
+            {
+                body.transform.rotation = new Quaternion(body.rotation.x, 0, body.rotation.z, body.rotation.w);
+            }
+        }
     }
 
     private void OnDrawGizmos()
