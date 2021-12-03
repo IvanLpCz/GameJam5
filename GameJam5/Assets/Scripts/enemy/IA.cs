@@ -106,7 +106,7 @@ public class IA : MonoBehaviour
     private void Attack()
     {
         hasShoot = true;
-        if (timeSinceLastAttack > fireRate && isAlive)
+        if (timeSinceLastAttack > fireRate)
         {
             PoolBullet();
         }
