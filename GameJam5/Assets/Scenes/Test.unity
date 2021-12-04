@@ -7419,6 +7419,7 @@ MonoBehaviour:
   wallJumped: 0
   wallSlide: 0
   isDashing: 0
+  isAlive: 0
   side: 1
   body: {fileID: 1741572888}
   dashParticle: {fileID: 253334247}

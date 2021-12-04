@@ -18,8 +18,8 @@ public class respawn : MonoBehaviour
     {
         if(other.tag == "bulletTest")
         {
+            controller.isAlive = false;
             controller.canMove = false;
-            controller.isDashing = true;
             StartCoroutine(dieAnimation());
         }
         else if(other.tag == "checkPoint")
@@ -31,7 +31,7 @@ public class respawn : MonoBehaviour
     {
         yield return new WaitForSeconds(dyingTime);
         player.transform.position = respawnPoint;
+        controller.isAlive = true;
         controller.canMove = true;
-        controller.isDashing = false;
     }
 }

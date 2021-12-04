@@ -29,6 +29,7 @@ public class playerController : MonoBehaviour
 
     private bool groundTouch;
     private bool hasDashed;
+    public bool isAlive;
 
     public int side = 1;
 
@@ -48,6 +49,7 @@ public class playerController : MonoBehaviour
     {
         coll = GetComponent<collisions>();
         rb = GetComponent<Rigidbody2D>();
+        isAlive = true;
         //anim = GetComponentInChildren<AnimationScript>();
     }
 
@@ -62,94 +64,97 @@ public class playerController : MonoBehaviour
         Walk(dir);
         //anim.SetHorizontalMovement(x, y, rb.velocity.y);
 
-        if (coll.onWall && Input.GetButton("Fire3") && canMove)
+        if (isAlive)
         {
-            if (side != coll.wallSide)
-                //anim.Flip(side * -1);
-            wallGrab = true;
-            wallSlide = false;
-        }
-
-        if (Input.GetButtonUp("Fire3") || !coll.onWall || !canMove)
-        {
-            wallGrab = false;
-            wallSlide = false;
-        }
-
-        if (coll.onGround && !isDashing)
-        {
-            wallJumped = false;
-            GetComponent<jumpUpgrade>().enabled = true;
-        }
-
-        if (wallGrab && !isDashing)
-        {
-            rb.gravityScale = 0;
-            if (x > .2f || x < -.2f)
-                rb.velocity = new Vector2(rb.velocity.x, 0);
-
-            float speedModifier = y > 0 ? .5f : 1;
-
-            rb.velocity = new Vector2(rb.velocity.x, y * (speed * speedModifier));
-        }
-        else
-        {
-            rb.gravityScale = 3;
-        }
-
-        if (coll.onWall && !coll.onGround)
-        {
-            if (x != 0 && !wallGrab)
+            if (coll.onWall && Input.GetButton("Fire3") && canMove)
             {
-                wallSlide = true;
-                WallSlide();
+                if (side != coll.wallSide)
+                    //anim.Flip(side * -1);
+                    wallGrab = true;
+                wallSlide = false;
             }
-        }
 
-        if (!coll.onWall || coll.onGround)
-            wallSlide = false;
+            if (Input.GetButtonUp("Fire3") || !coll.onWall || !canMove)
+            {
+                wallGrab = false;
+                wallSlide = false;
+            }
 
-        if (Input.GetButtonDown("Jump"))
-        {
-            //anim.SetTrigger("jump");
+            if (coll.onGround && !isDashing)
+            {
+                wallJumped = false;
+                GetComponent<jumpUpgrade>().enabled = true;
+            }
 
-            if (coll.onGround)
-                Jump(Vector2.up, false);
+            if (wallGrab && !isDashing)
+            {
+                rb.gravityScale = 0;
+                if (x > .2f || x < -.2f)
+                    rb.velocity = new Vector2(rb.velocity.x, 0);
+
+                float speedModifier = y > 0 ? .5f : 1;
+
+                rb.velocity = new Vector2(rb.velocity.x, y * (speed * speedModifier));
+            }
+            else
+            {
+                rb.gravityScale = 3;
+            }
+
             if (coll.onWall && !coll.onGround)
-                WallJump();
-        }
+            {
+                if (x != 0 && !wallGrab)
+                {
+                    wallSlide = true;
+                    WallSlide();
+                }
+            }
 
-        if (Input.GetButtonDown("Fire2") && !hasDashed)
-        {
-            if (xRaw != 0 || yRaw != 0)
-                Dash(xRaw, yRaw);
-        }
+            if (!coll.onWall || coll.onGround)
+                wallSlide = false;
 
-        if (coll.onGround && !groundTouch)
-        {
-            GroundTouch();
-            groundTouch = true;
-        }
+            if (Input.GetButtonDown("Jump"))
+            {
+                //anim.SetTrigger("jump");
 
-        if (!coll.onGround && groundTouch)
-        {
-            groundTouch = false;
-        }
+                if (coll.onGround)
+                    Jump(Vector2.up, false);
+                if (coll.onWall && !coll.onGround)
+                    WallJump();
+            }
 
-        WallParticle(y);
+            if (Input.GetButtonDown("Fire2") && !hasDashed)
+            {
+                if (xRaw != 0 || yRaw != 0)
+                    Dash(xRaw, yRaw);
+            }
 
-        if (wallGrab || wallSlide || !canMove)
-            return;
+            if (coll.onGround && !groundTouch)
+            {
+                GroundTouch();
+                groundTouch = true;
+            }
 
-        if (x > 0)
-        {
-            side = 1;
-            //anim.Flip(side);
-        }
-        if (x < 0)
-        {
-            side = -1;
-            //anim.Flip(side);
+            if (!coll.onGround && groundTouch)
+            {
+                groundTouch = false;
+            }
+
+            WallParticle(y);
+
+            if (wallGrab || wallSlide || !canMove)
+                return;
+
+            if (x > 0)
+            {
+                side = 1;
+                //anim.Flip(side);
+            }
+            if (x < 0)
+            {
+                side = -1;
+                //anim.Flip(side);
+            }
         }
 
     }
