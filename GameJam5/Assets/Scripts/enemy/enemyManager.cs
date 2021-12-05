@@ -8,16 +8,17 @@ public class enemyManager : MonoBehaviour
     [Header("webo")]
     [SerializeField] private GameObject[] enemies;
     [SerializeField] private Transform[] enemySpawn;
+    [SerializeField] private int castReSpawnTime;
 
-    private int numEnemies;
     private playerController playerStatus;
     private void Start()
     {
         playerStatus = GameObject.Find("Player").GetComponent<playerController>();
-        for (int i = 0; i <= numEnemies; i++)
+        for (int i = 0; i < enemies.Length; i++)
         {
             enemySpawn[i].position = enemies[i].transform.position;
-            print("spawnpoint " + enemySpawn[2]);
+            print("number of i on start " + i);
+
         }
     }
 
@@ -25,18 +26,23 @@ public class enemyManager : MonoBehaviour
     {
         if (!playerStatus.isAlive)
         {
-            ReSpawn();
+            StartCoroutine(delayReSpawn());
         }
+    }
+    IEnumerator delayReSpawn()
+    {
+        yield return new WaitForSeconds(castReSpawnTime);
+        ReSpawn();
     }
     void ReSpawn()
     {
-        for (int i = 0; i <= numEnemies; i++)
+        for (int i = 0; i < enemies.Length; i++)
         {
             enemies[i].transform.position = enemySpawn[i].position;
-            print("enemyPosition " + enemies[2].transform.position);
             enemies[i].SetActive(true);
             enemies[i].GetComponent<BoxCollider2D>().enabled = true;
             enemies[i].GetComponent<IA>().isAlive = true;
+            print("number of i on respawn " + i);
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
