@@ -542,7 +542,7 @@ MonoBehaviour:
   - {fileID: 646959688}
   - {fileID: 2142206450}
   - {fileID: 855270862}
-  castReSpawnTime: 1
+  castReSpawnDelay: 1
 --- !u!1 &146392292
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,7 +8,7 @@ public class enemyManager : MonoBehaviour
     [Header("webo")]
     [SerializeField] private GameObject[] enemies;
     [SerializeField] private Transform[] enemySpawn;
-    [SerializeField] private int castReSpawnTime;
+    [SerializeField] private int castReSpawnDelay;
 
     private playerController playerStatus;
     private void Start()
@@ -31,7 +31,7 @@ public class enemyManager : MonoBehaviour
     }
     IEnumerator delayReSpawn()
     {
-        yield return new WaitForSeconds(castReSpawnTime);
+        yield return new WaitForSeconds(castReSpawnDelay);
         ReSpawn();
     }
     void ReSpawn()
