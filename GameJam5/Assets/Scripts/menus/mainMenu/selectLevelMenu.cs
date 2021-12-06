@@ -11,7 +11,21 @@ public class selectLevelMenu : MonoBehaviour
     public AudioClip block;
     public AudioSource source;
     public bool canLevel2, canLevel3;
+    private levelUnlocked levelunlked;
 
+    private void Start()
+    {
+        levelunlked = GameObject.Find("GameManager").GetComponent<levelUnlocked>();
+
+        if (levelUnlocked.unlocked2)
+        {
+            canLevel2 = true;
+        }
+        if (levelUnlocked.unlocked3)
+        {
+            canLevel3 = true;
+        }
+    }
     public void playLevel1()
     {
         SceneManager.LoadScene("Level1");
