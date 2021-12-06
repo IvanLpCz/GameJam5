@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class selectLevelMenu : MonoBehaviour
 {
     public Button level1, level2, level3, back, toLevel2, toLevel3, backLevel2, backLevel1;
-    public GameObject canvasLevels, canvasLevel1, canvasLevel2, canvasLevel3, canvasMain, camLvl1, camLvl2, camLvl3, camMain;
+    public GameObject canvasLevels, canvasLevel1, canvasLevel2, canvasLevel3, canvasMain;
     public AudioClip block;
     public AudioSource source;
     public bool canLevel2, canLevel3;
@@ -28,7 +28,6 @@ public class selectLevelMenu : MonoBehaviour
     {
         canvasLevels.SetActive(false);
         canvasMain.SetActive(true);
-        camMain.SetActive(true);
     }
     public void ToLevel2()
     {
@@ -39,9 +38,7 @@ public class selectLevelMenu : MonoBehaviour
         if (canLevel2)
         {
             canvasLevel1.SetActive(false);
-            camLvl1.SetActive(false);
             canvasLevel2.SetActive(true);
-            camLvl2.SetActive(true);
         }
     }
     public void ToLevel3()
@@ -53,23 +50,17 @@ public class selectLevelMenu : MonoBehaviour
         if (canLevel3)
         {
             canvasLevel2.SetActive(false);
-            camLvl2.SetActive(false);
             canvasLevel3.SetActive(true);
-            camLvl3.SetActive(true);
         }
     }
     public void backToLevel1()
     {
         canvasLevel2.SetActive(false);
-        camLvl2.SetActive(false);
         canvasLevel1.SetActive(true);
-        camLvl1.SetActive(true);
     }
     public void backToLevel2()
     {
         canvasLevel3.SetActive(false);
-        camLvl3.SetActive(false);
         canvasLevel2.SetActive(true);
-        camLvl2.SetActive(true);
     }
 }
