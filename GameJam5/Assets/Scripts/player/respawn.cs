@@ -22,6 +22,12 @@ public class respawn : MonoBehaviour
             controller.canMove = false;
             StartCoroutine(dieAnimation());
         }
+        if (other.tag == "spikes")
+        {
+            controller.isAlive = false;
+            controller.canMove = false;
+            StartCoroutine(dieAnimation());
+        }
         else if(other.tag == "checkPoint")
         {
             respawnPoint = transform.position;
