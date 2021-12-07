@@ -13,11 +13,13 @@ public class levelFinish : MonoBehaviour
         if (onLevel1)
         {
             level2Unlocked = true;
+            PlayerPrefs.SetInt("unlokedLvl2", 1);
             SceneManager.LoadScene("MainMenu");
         }
         if (onLevel2)
         {
             level3Unlocked = true;
+            PlayerPrefs.SetInt("unlokedLvl3", 1);
             SceneManager.LoadScene("MainMenu");
         }
     }
