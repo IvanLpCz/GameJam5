@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class inGame : MonoBehaviour
+public class pausaMenu : MonoBehaviour
 {
     public Button resume, restart, exit;
     private Scene actualScene;
