@@ -7,7 +7,7 @@ public class loadProgres : MonoBehaviour
     public int saveUnlock2, saveUnlock3;
     public int collecteables1, collecteables2, collecteables3;
 
-    private void Start()
+    private void Update()
     {
         saveUnlock2 = PlayerPrefs.GetInt("unlokedLvl2", 0);
         saveUnlock3 = PlayerPrefs.GetInt("unlokedLvl3", 0);

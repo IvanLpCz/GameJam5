@@ -23,6 +23,11 @@ public class IA : MonoBehaviour
     [Space]
     [Header("liveOrNot")]
     public bool isAlive;
+
+    [Space]
+    [Header("weapons")]
+    public GameObject weaponATK;
+    public GameObject weaponIdle;
    
     private bool inRange;
     private bool lookinFor;
@@ -42,6 +47,7 @@ public class IA : MonoBehaviour
 
     private GameObject wayPoint;
     private Transform body;
+    private Animator animController;
 
     private void Start()
     {
@@ -52,8 +58,10 @@ public class IA : MonoBehaviour
         wayPoint = GameObject.Find("wayPoint");
         coll = GetComponent<collisions>();
         body = GetComponentInChildren<Transform>();
+        animController = GetComponentInChildren<Animator>();
 
-
+        weaponATK.SetActive(true);
+        weaponIdle.SetActive(false);
         boxCollider.enabled = true;
     }
 
@@ -65,11 +73,17 @@ public class IA : MonoBehaviour
         if (InAttackRangeOfPlayer() && !coll.onGround && !coll.onLeftWall)
         {
             lookinFor = true;
+            weaponATK.SetActive(false);
+            weaponIdle.SetActive(true);
+            animController.SetBool("lookingForPlayer", true);
             StopCoroutine(suspiciousBehaviour());
         }
         else
         {
             lookinFor = false;
+            weaponATK.SetActive(true);
+            weaponIdle.SetActive(false);
+            animController.SetBool("lookingForPlayer", false);
             StartCoroutine(suspiciousBehaviour());
         }
         if (GetIsInRange() && isAlive)
@@ -99,6 +113,8 @@ public class IA : MonoBehaviour
 
     private void MovingToTarget()
     {
+        animController.SetBool("shooting", false);
+        animController.SetBool("lookingForPlayer", true);
         wayPointPos = new Vector3(wayPoint.transform.position.x, transform.position.y, wayPoint.transform.position.z);
         transform.position = Vector2.MoveTowards(transform.position, wayPointPos, speed * Time.deltaTime);
     }
@@ -109,6 +125,7 @@ public class IA : MonoBehaviour
         if (timeSinceLastAttack > fireRate)
         {
             PoolBullet();
+            animController.SetBool("shooting", true);
         }
     }
 
@@ -153,7 +170,12 @@ public class IA : MonoBehaviour
         if (!lookinFor && !inRange)
         {
             transform.position = Vector2.MoveTowards(transform.position, guardPosition, speedGuard * Time.deltaTime);
-        }        
+            animController.SetBool("backToGuard", true);
+        }
+        if(transform.position == guardPosition)
+        {
+            animController.SetBool("backToGuard", false);
+        }
     }
     IEnumerator suspiciousBehaviour()
     {
@@ -191,7 +213,9 @@ public class IA : MonoBehaviour
     }
     IEnumerator dying()
     {
-
+        animController.SetTrigger("die");
+        weaponATK.SetActive(false);
+        weaponIdle.SetActive(false);
         yield return new WaitForSeconds(1.5f);
         gameObject.SetActive(false);
     }

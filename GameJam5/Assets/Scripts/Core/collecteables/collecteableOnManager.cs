@@ -13,8 +13,16 @@ public class collecteableOnManager : MonoBehaviour
 
     private void Start()
     {
-        collUI = GameObject.Find("collecteableManager").GetComponent<collecteableOnUI>();
+        if(SceneManager.GetActiveScene().name == "MainMenu")
+        {
+
+        }
+        else
+        {
+            collUI = GameObject.Find("collecteableManager").GetComponent<collecteableOnUI>();
+        }
         saveData = GameObject.Find("SaveData").GetComponent<loadProgres>();
+
 
         picked1 = saveData.collecteables1;
         picked2 = saveData.collecteables2;
@@ -41,17 +49,17 @@ public class collecteableOnManager : MonoBehaviour
             lvl2 = false;
             lvl3 = true;
         }
-        if (lvl1)
+        if (lvl1 && SceneManager.GetActiveScene().name == "Level1")
         {
             pickedCollecteableslvl1 = collUI.pickedCollecteables;
             PlayerPrefs.SetInt("collecteablesLvl1", pickedCollecteableslvl1);
         }
-        if (lvl2)
+        if (lvl2 && SceneManager.GetActiveScene().name == "Level2")
         {
             pickedCollecteableslvl2 = collUI.pickedCollecteables;
             PlayerPrefs.SetInt("collecteablesLvl2", pickedCollecteableslvl2);
         }
-        if (lvl3)
+        if (lvl3 && SceneManager.GetActiveScene().name == "Level3")
         {
             pickedCollecteableslvl3 = collUI.pickedCollecteables;
             PlayerPrefs.SetInt("collecteablesLvl3", pickedCollecteableslvl3);

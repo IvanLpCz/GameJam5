@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class levelUnlocked : MonoBehaviour
 {
@@ -11,7 +12,14 @@ public class levelUnlocked : MonoBehaviour
 
     private void Start()
     {
-        levelend = GameObject.Find("finishLevel").GetComponent<levelFinish>();
+        //if (SceneManager.GetActiveScene().name == "MainMenu")
+        //{
+
+        //}
+        //else
+        //{
+        //    levelend = GameObject.Find("finishLevel").GetComponent<levelFinish>();
+        //}
         saveData = GameObject.Find("SaveData").GetComponent<loadProgres>();
         if(saveData.saveUnlock2 == 1)
         {
@@ -23,15 +31,15 @@ public class levelUnlocked : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        if (levelend.level2Unlocked)
-        {
-            unlocked2 = true;
-        }
-        if (levelend.level3Unlocked)
-        {
-            unlocked3 = true;
-        }
-    }
+    //private void Update()
+    //{
+    //    if (SceneManager.GetActiveScene().name == "Level1" && levelend.level2Unlocked)
+    //    {
+    //        unlocked2 = true;
+    //    }
+    //    if (SceneManager.GetActiveScene().name == "Level2" && levelend.level3Unlocked)
+    //    {
+    //        unlocked3 = true;
+    //    }
+    //}
 }
