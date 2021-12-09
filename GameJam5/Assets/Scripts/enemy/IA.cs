@@ -109,6 +109,11 @@ public class IA : MonoBehaviour
             MovingToTarget();
             checkRotation();
         }
+        if (!isAlive)
+        {
+            weaponATK.SetActive(false);
+            weaponIdle.SetActive(false);
+        }
     }
 
     private void MovingToTarget()
@@ -214,8 +219,6 @@ public class IA : MonoBehaviour
     IEnumerator dying()
     {
         animController.SetTrigger("die");
-        weaponATK.SetActive(false);
-        weaponIdle.SetActive(false);
         yield return new WaitForSeconds(1.5f);
         gameObject.SetActive(false);
     }
