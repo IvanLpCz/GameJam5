@@ -9,11 +9,13 @@ public class respawn : MonoBehaviour
     private Vector3 respawnPoint;
     public Animator playerAnimator;
     [SerializeField] private int dyingTime;
+    private AudioSource audioS;
+    public AudioClip death;
 
     private void Start()
     {
         respawnPoint = transform.position;
-
+        audioS = GetComponent<AudioSource>();
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -36,6 +38,12 @@ public class respawn : MonoBehaviour
     }
     IEnumerator dieAnimation()
     {
+        bool diying = false;
+        if (!diying)
+        {
+            audioS.PlayOneShot(death, 0.7f);
+            diying = true;
+        }
         playerAnimator.SetTrigger("die");
         yield return new WaitForSeconds(dyingTime);
         player.transform.position = respawnPoint;

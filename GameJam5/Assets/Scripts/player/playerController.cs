@@ -44,6 +44,13 @@ public class playerController : MonoBehaviour
     public ParticleSystem wallJumpParticle;
     public ParticleSystem slideParticle;
 
+    [Space]
+    [Header("sounds")]
+    public AudioClip dash;
+    public AudioClip jump;
+    public AudioClip walk;
+
+    private AudioSource audioS;
 
     void Start()
     {
@@ -51,6 +58,7 @@ public class playerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         isAlive = true;
         dashParticle.Stop();
+        audioS = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -195,7 +203,7 @@ public class playerController : MonoBehaviour
     IEnumerator DashWait()
     {
         StartCoroutine(GroundDash());
-
+        audioS.PlayOneShot(dash, 0.7f);
         dashParticle.Play();
         rb.gravityScale = 0;
         GetComponent<jumpUpgrade>().enabled = false;
@@ -282,6 +290,8 @@ public class playerController : MonoBehaviour
 
     private void Jump(Vector2 dir, bool wall)
     {
+        audioS.PlayOneShot(jump, 0.7f);
+
         slideParticle.transform.parent.localScale = new Vector3(ParticleSide(), 1, 1);
         ParticleSystem particle = wall ? wallJumpParticle : jumpParticle;
 
