@@ -13,6 +13,8 @@ public class IA : MonoBehaviour
     [SerializeField] float speed = 20f;
     [SerializeField] float speedGuard = 15f;
     [SerializeField] float suspiciousTime = 2f;
+    [Range(0, 1)]
+    [SerializeField] float soundVolume = 0.7f;
     public string bulletTag;
 
     [Space]
@@ -28,10 +30,18 @@ public class IA : MonoBehaviour
     [Header("weapons")]
     public GameObject weaponATK;
     public GameObject weaponIdle;
-   
+
+    [Space]
+    [Header("sounds")]
+    public AudioClip alert;
+    public AudioClip shoot;
+    public AudioClip death;
+    public AudioClip walk;
+
     private bool inRange;
     private bool lookinFor;
     private bool hasShoot;
+    private bool firstTimeSeePlayer = true;
 
     private Rigidbody2D rb;
     private BoxCollider2D boxCollider;
@@ -48,12 +58,15 @@ public class IA : MonoBehaviour
     private GameObject wayPoint;
     private Transform body;
     private Animator animController;
+    private AudioSource audioS;
 
+    public AudioSource walkingSoruce;
     private void Start()
     {
         isAlive = true;
         guardPosition = transform.position;
         rb = GetComponent<Rigidbody2D>();
+        audioS = GetComponent<AudioSource>();
         boxCollider = GetComponent<BoxCollider2D>();
         wayPoint = GameObject.Find("wayPoint");
         coll = GetComponent<collisions>();
@@ -77,6 +90,12 @@ public class IA : MonoBehaviour
             weaponIdle.SetActive(true);
             animController.SetBool("lookingForPlayer", true);
             StopCoroutine(suspiciousBehaviour());
+            if (firstTimeSeePlayer)
+            {
+                audioS.PlayOneShot(alert, soundVolume);
+            }
+
+            firstTimeSeePlayer = false;
         }
         else
         {
@@ -91,6 +110,7 @@ public class IA : MonoBehaviour
             inRange = true;
             lookinFor = false;
             checkRotation();
+            walkingSoruce.Stop();
         }
         else
         {
@@ -108,6 +128,10 @@ public class IA : MonoBehaviour
         {
             MovingToTarget();
             checkRotation();
+            if(!walkingSoruce.isPlaying)
+            {
+                walkingSoruce.Play();
+            }
         }
         if (!isAlive)
         {
@@ -142,6 +166,7 @@ public class IA : MonoBehaviour
         {
             bullet.transform.position = aimPos.position;
             bullet.transform.rotation = aimPos.rotation;
+            audioS.PlayOneShot(shoot, soundVolume);
             bullet.SetActive(true);
         }
         timeSinceLastAttack = 0f;
@@ -218,6 +243,12 @@ public class IA : MonoBehaviour
     }
     IEnumerator dying()
     {
+        bool diying = false;
+        if (!diying)
+        {
+            audioS.PlayOneShot(death, soundVolume);
+            diying = true;
+        }
         animController.SetTrigger("die");
         yield return new WaitForSeconds(1.5f);
         gameObject.SetActive(false);

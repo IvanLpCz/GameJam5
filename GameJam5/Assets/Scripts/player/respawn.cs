@@ -7,6 +7,7 @@ public class respawn : MonoBehaviour
     public playerController controller;
     public GameObject player;
     private Vector3 respawnPoint;
+    public Animator playerAnimator;
     [SerializeField] private int dyingTime;
 
     private void Start()
@@ -35,9 +36,11 @@ public class respawn : MonoBehaviour
     }
     IEnumerator dieAnimation()
     {
+        playerAnimator.SetTrigger("die");
         yield return new WaitForSeconds(dyingTime);
         player.transform.position = respawnPoint;
         controller.isAlive = true;
         controller.canMove = true;
+        playerAnimator.ResetTrigger("die");
     }
 }

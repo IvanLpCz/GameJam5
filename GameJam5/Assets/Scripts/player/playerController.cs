@@ -7,7 +7,6 @@ public class playerController : MonoBehaviour
     private collisions coll;
     [HideInInspector]
     public Rigidbody2D rb;
-    //private AnimationScript anim;
 
     [Space]
     [Header("Stats")]
@@ -36,7 +35,7 @@ public class playerController : MonoBehaviour
     [Space]
     [Header("GameObjects")]
     public Transform body;
-
+    public Animator playerAnimator;
 
     [Space]
     [Header("Polish")]
@@ -51,7 +50,6 @@ public class playerController : MonoBehaviour
         coll = GetComponent<collisions>();
         rb = GetComponent<Rigidbody2D>();
         isAlive = true;
-        //anim = GetComponentInChildren<AnimationScript>();
     }
 
     void Update()
@@ -63,14 +61,12 @@ public class playerController : MonoBehaviour
         Vector2 dir = new Vector2(x, y);
 
         Walk(dir);
-        //anim.SetHorizontalMovement(x, y, rb.velocity.y);
 
         if (isAlive)
         {
             if (coll.onWall && Input.GetButton("Fire3") && canMove)
             {
                 if (side != coll.wallSide)
-                    //anim.Flip(side * -1);
                     wallGrab = true;
                 wallSlide = false;
             }
@@ -116,8 +112,8 @@ public class playerController : MonoBehaviour
 
             if (Input.GetButtonDown("Jump"))
             {
-                //anim.SetTrigger("jump");
-
+                playerAnimator.SetTrigger("jump");
+                playerAnimator.SetBool("isJumping", true);
                 if (coll.onGround)
                     Jump(Vector2.up, false);
                 if (coll.onWall && !coll.onGround)
@@ -149,36 +145,44 @@ public class playerController : MonoBehaviour
             if (x > 0)
             {
                 side = 1;
-                //anim.Flip(side);
             }
             if (x < 0)
             {
                 side = -1;
-                //anim.Flip(side);
+            }
+            if(Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
+            {
+                playerAnimator.SetBool("isWalking", true);
+            }
+            else
+            {
+                playerAnimator.SetBool("isWalking", false);
+            }
+            if (Input.GetKey(KeyCode.LeftShift) )
+            {
+                playerAnimator.SetBool("isCliming", true);
+            }
+            else
+            {
+                playerAnimator.SetBool("isCliming", false);
             }
         }
-
     }
 
     void GroundTouch()
     {
         hasDashed = false;
         isDashing = false;
-
-        //side = anim.sr.flipX ? -1 : 1;
+        playerAnimator.SetBool("isJumping", false);
 
         jumpParticle.Play();
     }
 
     private void Dash(float x, float y)
     {
-        //Camera.main.transform.DOComplete();
-        //Camera.main.transform.DOShakePosition(.2f, .5f, 14, 90, false, true);
-        //FindObjectOfType<RippleEffect>().Emit(Camera.main.WorldToViewportPoint(transform.position));
 
         hasDashed = true;
 
-        //anim.SetTrigger("dash");
 
         rb.velocity = Vector2.zero;
         Vector2 dir = new Vector2(x, y);
@@ -189,9 +193,7 @@ public class playerController : MonoBehaviour
 
     IEnumerator DashWait()
     {
-        //FindObjectOfType<GhostTrail>().ShowGhost();
         StartCoroutine(GroundDash());
-        //DOVirtual.Float(14, 0, .8f, RigidbodyDrag);
 
         dashParticle.Play();
         rb.gravityScale = 0;
@@ -220,7 +222,6 @@ public class playerController : MonoBehaviour
         if ((side == 1 && coll.onRightWall) || side == -1 && !coll.onRightWall)
         {
             side *= -1;
-            //anim.Flip(side);
         }
 
         StopCoroutine(DisableMovement(0));
@@ -236,7 +237,6 @@ public class playerController : MonoBehaviour
     private void WallSlide()
     {
         if (coll.wallSide != side)
-            //anim.Flip(side * -1);
 
         if (!canMove)
             return;
@@ -253,6 +253,7 @@ public class playerController : MonoBehaviour
 
     private void Walk(Vector2 dir)
     {
+
         if (!canMove)
             return;
 

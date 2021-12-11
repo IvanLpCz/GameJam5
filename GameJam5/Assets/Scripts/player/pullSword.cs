@@ -6,6 +6,7 @@ public class pullSword : MonoBehaviour
 {
     public GameObject swordCollider;
     public float attackTime = 0.3f;
+    public Animator playerAnimator;
 
     private void Update()
     {
@@ -18,7 +19,9 @@ public class pullSword : MonoBehaviour
     IEnumerator pullTheSword()
     {
         swordCollider.SetActive(true);
+        playerAnimator.SetTrigger("firstAttack");
         yield return new WaitForSeconds(attackTime);
         swordCollider.SetActive(false);
+        playerAnimator.ResetTrigger("firstAttack");
     }
 }
