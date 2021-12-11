@@ -20,7 +20,12 @@ public class collecteable : MonoBehaviour
         {
             collUI.pickedCollecteables = collUI.pickedCollecteables + 1;
             source.PlayOneShot(sound, 0.7f);
-            gameObject.SetActive(false);
+            StartCoroutine(setFalse());
         }
+    }
+    IEnumerator setFalse()
+    {
+        yield return new WaitForSeconds(0.3f);
+        gameObject.SetActive(false);
     }
 }

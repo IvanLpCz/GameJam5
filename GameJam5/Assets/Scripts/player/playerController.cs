@@ -48,7 +48,7 @@ public class playerController : MonoBehaviour
     [Header("sounds")]
     public AudioClip dash;
     public AudioClip jump;
-    public AudioClip walk;
+    public AudioSource walkingSoruce;
 
     private AudioSource audioS;
 
@@ -162,10 +162,15 @@ public class playerController : MonoBehaviour
             if(Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
             {
                 playerAnimator.SetBool("isWalking", true);
+                if (!walkingSoruce.isPlaying)
+                {
+                    walkingSoruce.Play();
+                }
             }
             else
             {
                 playerAnimator.SetBool("isWalking", false);
+                walkingSoruce.Stop();
             }
             if (Input.GetKey(KeyCode.LeftShift) )
             {
