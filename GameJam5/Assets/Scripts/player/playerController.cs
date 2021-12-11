@@ -50,6 +50,7 @@ public class playerController : MonoBehaviour
         coll = GetComponent<collisions>();
         rb = GetComponent<Rigidbody2D>();
         isAlive = true;
+        dashParticle.Stop();
     }
 
     void Update()
