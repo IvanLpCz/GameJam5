@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: 110c078e421f94748a7f8a5efb676448
+guid: bd3d529de0469794288f5b1b976e3398
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable:
   - first:
-      74: 1827226128182048838
-    second: Take 001
+      74: 8723667909268787305
+    second: Ataque_VueltaAIddle
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -93,11 +93,11 @@ ModelImporter:
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1
-  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: b1e3d605063e435439f3108fe74660dc, type: 3}
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
-  avatarSetup: 1
+  avatarSetup: 2
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
   additionalBone: 0
   userData: 
