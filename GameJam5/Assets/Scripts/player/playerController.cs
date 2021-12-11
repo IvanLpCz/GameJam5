@@ -147,15 +147,8 @@ public class playerController : MonoBehaviour
             }
 
             WallParticle(y);
-            if (wallGrab)
-            {
-                playerAnimator.SetBool("isCliming", true);
-            }
-            else
-            {
-                playerAnimator.SetBool("isCliming", false);
-            }
-            Debug.Log("agarrado a la pared: " + wallGrab);
+            Animations();
+
             if (wallGrab || wallSlide || !canMove)
                 return;
 
@@ -167,25 +160,52 @@ public class playerController : MonoBehaviour
             {
                 side = -1;
             }
-            if(Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
-            {
-                playerAnimator.SetBool("isWalking", true);
-                if (!walkingSoruce.isPlaying)
-                {
-                    walkingSoruce.Play();
-                }
-            }
-            else
-            {
-                playerAnimator.SetBool("isWalking", false);
-                walkingSoruce.Stop();
-            }
+        }
+    }
 
-            if (rb.velocity.y < -2)
+    private void Animations()
+    {
+        if (wallGrab)
+        {
+            playerAnimator.SetBool("isCliming", true);
+        }
+        else
+        {
+            playerAnimator.SetBool("isCliming", false);
+        }
+        if (wallGrab && Input.GetKey(KeyCode.S))
+        {
+            playerAnimator.SetBool("isSliding", true);
+        }
+        else
+        {
+            playerAnimator.SetBool("isSliding", false);
+        }
+        if (wallGrab && !Input.GetKey(KeyCode.S) && !Input.GetKey(KeyCode.W))
+        {
+            playerAnimator.SetBool("stopClimb", true);
+        }
+        else
+        {
+            playerAnimator.SetBool("stopClimb", false);
+        }
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
+        {
+            playerAnimator.SetBool("isWalking", true);
+            if (!walkingSoruce.isPlaying)
             {
-                playerAnimator.SetTrigger("fall");
-                
+                walkingSoruce.Play();
             }
+        }
+        else
+        {
+            playerAnimator.SetBool("isWalking", false);
+            walkingSoruce.Stop();
+        }
+
+        if (rb.velocity.y < -2)
+        {
+            playerAnimator.SetTrigger("fall");
 
         }
     }
@@ -290,11 +310,11 @@ public class playerController : MonoBehaviour
             rb.velocity = Vector2.Lerp(rb.velocity, (new Vector2(dir.x * speed, rb.velocity.y)), wallJumpLerp * Time.deltaTime);
         }
 
-        if(dir.x < 0)
+        if(Input.GetKeyDown(KeyCode.A))
         { 
             body.rotation = new Quaternion(body.rotation.x, 180, body.rotation.z, body.rotation.w);
         }
-        else if(dir.x >= 0)
+        else if(Input.GetKeyDown(KeyCode.D))
         {
             body.rotation = new Quaternion(body.rotation.x, 0, body.rotation.z, body.rotation.w); 
         }
