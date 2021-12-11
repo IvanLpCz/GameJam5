@@ -119,6 +119,7 @@ public class IA : MonoBehaviour
         if (inRange && isAlive)
         {
             Attack();
+            walkingSoruce.Stop();
         }
         if (!hasShoot)
         {
@@ -201,10 +202,15 @@ public class IA : MonoBehaviour
         {
             transform.position = Vector2.MoveTowards(transform.position, guardPosition, speedGuard * Time.deltaTime);
             animController.SetBool("backToGuard", true);
+            if (!walkingSoruce.isPlaying)
+            {
+                walkingSoruce.Play();
+            }
         }
         if(transform.position == guardPosition)
         {
             animController.SetBool("backToGuard", false);
+            walkingSoruce.Stop();
         }
     }
     IEnumerator suspiciousBehaviour()

@@ -172,7 +172,8 @@ public class playerController : MonoBehaviour
                 playerAnimator.SetBool("isWalking", false);
                 walkingSoruce.Stop();
             }
-            if (Input.GetKey(KeyCode.LeftShift) )
+            Debug.Log(wallGrab);
+            if (Input.GetKey(KeyCode.LeftShift) && wallGrab)
             {
                 playerAnimator.SetBool("isCliming", true);
             }
@@ -180,6 +181,13 @@ public class playerController : MonoBehaviour
             {
                 playerAnimator.SetBool("isCliming", false);
             }
+
+            if (rb.velocity.y < -2)
+            {
+                playerAnimator.SetTrigger("fall");
+                
+            }
+
         }
     }
 
