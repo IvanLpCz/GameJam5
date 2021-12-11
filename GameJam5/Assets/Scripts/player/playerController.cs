@@ -147,7 +147,15 @@ public class playerController : MonoBehaviour
             }
 
             WallParticle(y);
-
+            if (wallGrab)
+            {
+                playerAnimator.SetBool("isCliming", true);
+            }
+            else
+            {
+                playerAnimator.SetBool("isCliming", false);
+            }
+            Debug.Log("agarrado a la pared: " + wallGrab);
             if (wallGrab || wallSlide || !canMove)
                 return;
 
@@ -171,15 +179,6 @@ public class playerController : MonoBehaviour
             {
                 playerAnimator.SetBool("isWalking", false);
                 walkingSoruce.Stop();
-            }
-            Debug.Log(wallGrab);
-            if (Input.GetKey(KeyCode.LeftShift) && wallGrab)
-            {
-                playerAnimator.SetBool("isCliming", true);
-            }
-            else
-            {
-                playerAnimator.SetBool("isCliming", false);
             }
 
             if (rb.velocity.y < -2)
@@ -297,7 +296,7 @@ public class playerController : MonoBehaviour
         }
         else if(dir.x >= 0)
         {
-            body.rotation = new Quaternion(body.rotation.x, 0, body.rotation.z, body.rotation.w); ;
+            body.rotation = new Quaternion(body.rotation.x, 0, body.rotation.z, body.rotation.w); 
         }
     }
 
