@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0.99999905, b: 0.99999905, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2175,10 +2175,10 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 18.083214, y: -4.5910244}
-      - {x: 17.646992, y: 23.931152}
-      - {x: -21.249168, y: 24.401472}
-      - {x: -21.076263, y: -4.7884064}
+    - - {x: 16.432, y: -5.208392}
+      - {x: 15.827381, y: 19.976154}
+      - {x: -18.28024, y: 19.583534}
+      - {x: -19.157082, y: -4.5245333}
       - {x: 4.480797, y: -4.949772}
 --- !u!114 &457099316
 MonoBehaviour:
@@ -2660,7 +2660,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 929f2387670bbc24c97ce0f277738b00, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -3749,7 +3749,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8930793592885604888, guid: 7fd76f71d9afd8248a0e4adbcb963f5a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.924704
+      value: -6.925691
       objectReference: {fileID: 0}
     - target: {fileID: 8930793592885604888, guid: 7fd76f71d9afd8248a0e4adbcb963f5a, type: 3}
       propertyPath: m_LocalPosition.y
@@ -5225,7 +5225,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1536408015}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.576824, y: 2.7793684, z: -10}
+  m_LocalPosition: {x: -4.5778112, y: 2.7793827, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 411344449}
