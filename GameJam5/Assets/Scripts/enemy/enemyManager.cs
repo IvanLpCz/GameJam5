@@ -5,7 +5,7 @@ using UnityEngine;
 public class enemyManager : MonoBehaviour
 {
     [Space]
-    [Header("webo")]
+    [Header("Parameters")]
     [SerializeField] private GameObject[] enemies;
     [SerializeField] private Transform[] enemySpawn;
     [SerializeField] private int castReSpawnDelay;
