@@ -11,6 +11,7 @@ public class respawn : MonoBehaviour
     [SerializeField] private int dyingTime;
     private AudioSource audioS;
     public AudioClip death;
+    public GameObject cortinilla;
 
     private void Start()
     {
@@ -43,6 +44,7 @@ public class respawn : MonoBehaviour
         {
             audioS.PlayOneShot(death, 0.7f);
             diying = true;
+            cortinilla.SetActive(true);
         }
         playerAnimator.SetTrigger("die");
         yield return new WaitForSeconds(dyingTime);
@@ -50,5 +52,7 @@ public class respawn : MonoBehaviour
         controller.isAlive = true;
         controller.canMove = true;
         playerAnimator.ResetTrigger("die");
+        yield return new WaitForSeconds(dyingTime);
+        cortinilla.SetActive(false);
     }
 }
