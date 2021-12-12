@@ -1518,22 +1518,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7636114675153193550, guid: f947b8682783aa146adfd2e4e184eee3, type: 3}
-      propertyPath: m_Size.x
-      value: 0.9758656
-      objectReference: {fileID: 0}
-    - target: {fileID: 7636114675153193550, guid: f947b8682783aa146adfd2e4e184eee3, type: 3}
-      propertyPath: m_Size.y
-      value: 4.9095654
-      objectReference: {fileID: 0}
-    - target: {fileID: 7636114675153193550, guid: f947b8682783aa146adfd2e4e184eee3, type: 3}
-      propertyPath: m_Offset.x
-      value: 0.48246944
-      objectReference: {fileID: 0}
-    - target: {fileID: 7636114675153193550, guid: f947b8682783aa146adfd2e4e184eee3, type: 3}
-      propertyPath: m_Offset.y
-      value: 0.97428864
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f947b8682783aa146adfd2e4e184eee3, type: 3}
 --- !u!95 &232029903 stripped
@@ -4695,7 +4679,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8774050212189236540, guid: 3b895b4ce5366f142a6e8f7e7828363b, type: 3}
       propertyPath: dashSpeed
-      value: 30
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 8774050212189236548, guid: 3b895b4ce5366f142a6e8f7e7828363b, type: 3}
       propertyPath: m_Name
