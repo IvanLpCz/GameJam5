@@ -133,6 +133,7 @@ public class playerController : MonoBehaviour
             {
                 if (xRaw != 0 || yRaw != 0)
                     Dash(xRaw, yRaw);
+                playerAnimator.SetTrigger("dash");
             }
 
             if (coll.onGround && !groundTouch)
