@@ -52,20 +52,23 @@ public class collecteableOnManager : MonoBehaviour
         if (lvl1 && SceneManager.GetActiveScene().name == "Level1")
         {
             pickedCollecteableslvl1 = collUI.pickedCollecteables;
-            PlayerPrefs.SetInt("collecteablesLvl1", pickedCollecteableslvl1);
+            PlayerPrefs.GetInt("collecteablesLvl1", pickedCollecteableslvl1);
         }
         if (lvl2 && SceneManager.GetActiveScene().name == "Level2")
         {
             pickedCollecteableslvl2 = collUI.pickedCollecteables;
-            PlayerPrefs.SetInt("collecteablesLvl2", pickedCollecteableslvl2);
+            PlayerPrefs.GetInt("collecteablesLvl2", pickedCollecteableslvl2);
         }
         if (lvl3 && SceneManager.GetActiveScene().name == "Level3")
         {
             pickedCollecteableslvl3 = collUI.pickedCollecteables;
-            PlayerPrefs.SetInt("collecteablesLvl3", pickedCollecteableslvl3);
+            PlayerPrefs.GetInt("collecteablesLvl3", pickedCollecteableslvl3);
         }
-        picked1 = pickedCollecteableslvl1;
-        picked2 = pickedCollecteableslvl2;
-        picked3 = pickedCollecteableslvl3;
+        if(SceneManager.GetActiveScene().name == "MainMenu")
+        {
+            picked1 = PlayerPrefs.GetInt("collecteablesLvl1");
+            picked2 = PlayerPrefs.GetInt("collecteablesLvl2");
+            picked3 = PlayerPrefs.GetInt("collecteablesLvl3");
+        }
     }
 }
