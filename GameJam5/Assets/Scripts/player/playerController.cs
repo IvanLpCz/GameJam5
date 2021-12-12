@@ -73,6 +73,14 @@ public class playerController : MonoBehaviour
 
         if (isAlive)
         {
+            if (Input.GetKeyDown(KeyCode.A) && !playerAnimator.GetBool("isCliming"))
+            {
+                body.rotation = new Quaternion(body.rotation.x, 180, body.rotation.z, body.rotation.w);
+            }
+            else if (Input.GetKeyDown(KeyCode.D) && !playerAnimator.GetBool("isCliming"))
+            {
+                body.rotation = new Quaternion(body.rotation.x, 0, body.rotation.z, body.rotation.w);
+            }
             if (coll.onWall && Input.GetButton("Fire3") && canMove)
             {
                 if (side != coll.wallSide)
@@ -190,7 +198,7 @@ public class playerController : MonoBehaviour
         {
             playerAnimator.SetBool("stopClimb", false);
         }
-        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
+        if ((Input.GetKey(KeyCode.A) && !playerAnimator.GetBool("isCliming")) || (Input.GetKey(KeyCode.D) && !playerAnimator.GetBool("isCliming")))
         {
             playerAnimator.SetBool("isWalking", true);
             if (!walkingSoruce.isPlaying)
