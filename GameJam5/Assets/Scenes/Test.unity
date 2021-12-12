@@ -959,6 +959,7 @@ MonoBehaviour:
   isAlive: 1
   weaponATK: {fileID: 0}
   weaponIdle: {fileID: 0}
+  particleShoot: {fileID: 0}
   alert: {fileID: 0}
   shoot: {fileID: 0}
   death: {fileID: 0}
@@ -1959,6 +1960,7 @@ MonoBehaviour:
   isAlive: 1
   weaponATK: {fileID: 0}
   weaponIdle: {fileID: 0}
+  particleShoot: {fileID: 0}
   alert: {fileID: 0}
   shoot: {fileID: 0}
   death: {fileID: 0}
@@ -2261,7 +2263,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1410725873
 Transform:
   m_ObjectHideFlags: 0
@@ -4778,6 +4780,11 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!1 &2009368577 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2009368577, guid: d9710e6d4d1c45d4783c7f9639638f46, type: 3}
+  m_PrefabInstance: {fileID: 3617545583489527286}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2043979027
 GameObject:
   m_ObjectHideFlags: 0
@@ -5402,6 +5409,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 655693459}
     m_Modifications:
+    - target: {fileID: 2009368578, guid: d9710e6d4d1c45d4783c7f9639638f46, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2009368578, guid: d9710e6d4d1c45d4783c7f9639638f46, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2009368578, guid: d9710e6d4d1c45d4783c7f9639638f46, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2009368578, guid: d9710e6d4d1c45d4783c7f9639638f46, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.452
+      objectReference: {fileID: 0}
+    - target: {fileID: 2009368580, guid: d9710e6d4d1c45d4783c7f9639638f46, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2009368580, guid: d9710e6d4d1c45d4783c7f9639638f46, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 3617545583242582945, guid: d9710e6d4d1c45d4783c7f9639638f46, type: 3}
       propertyPath: m_Name
       value: Enemy
@@ -5454,6 +5485,10 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 796158524}
+    - target: {fileID: 3617545583242582955, guid: d9710e6d4d1c45d4783c7f9639638f46, type: 3}
+      propertyPath: particleShoot
+      value: 
+      objectReference: {fileID: 2009368577}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d9710e6d4d1c45d4783c7f9639638f46, type: 3}
 --- !u!1001 &5925837637273528868
@@ -5895,6 +5930,10 @@ PrefabInstance:
     - target: {fileID: 8774050212189236537, guid: 3b895b4ce5366f142a6e8f7e7828363b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8774050212189236540, guid: 3b895b4ce5366f142a6e8f7e7828363b, type: 3}
+      propertyPath: dashSpeed
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8774050212189236548, guid: 3b895b4ce5366f142a6e8f7e7828363b, type: 3}
       propertyPath: m_Name

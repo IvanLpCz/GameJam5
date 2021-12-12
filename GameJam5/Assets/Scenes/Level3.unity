@@ -304,9 +304,9 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 15.943893, y: 9.844567}
-      - {x: 5.5504, y: 14.912891}
-      - {x: -23.6194, y: 23.728827}
+    - - {x: 16.84999, y: 10.071094}
+      - {x: 10.080948, y: 19.14138}
+      - {x: -23.6194, y: 27.428759}
       - {x: -23.673973, y: -4.4353194}
       - {x: -23.633694, y: -5.543516}
       - {x: 18.082039, y: 0.30091667}
@@ -468,8 +468,8 @@ PolygonCollider2D:
   m_Points:
     m_Paths:
     - - {x: 25.06279, y: 6.512409}
-      - {x: 24.925247, y: 23.757717}
-      - {x: -23.6194, y: 23.728827}
+      - {x: 25.15178, y: 29.6474}
+      - {x: -23.090843, y: 29.543001}
       - {x: -23.673973, y: -4.4353194}
       - {x: -23.633694, y: -5.543516}
       - {x: 24.98803, y: -5.3122787}
@@ -687,6 +687,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 23875943}
     m_Modifications:
+    - target: {fileID: 2009368580, guid: d9710e6d4d1c45d4783c7f9639638f46, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2009368580, guid: d9710e6d4d1c45d4783c7f9639638f46, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 3617545583242582945, guid: d9710e6d4d1c45d4783c7f9639638f46, type: 3}
       propertyPath: m_Name
       value: Enemy (5)
@@ -980,6 +988,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 23875943}
     m_Modifications:
+    - target: {fileID: 2009368580, guid: d9710e6d4d1c45d4783c7f9639638f46, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2009368580, guid: d9710e6d4d1c45d4783c7f9639638f46, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 3617545583242582945, guid: d9710e6d4d1c45d4783c7f9639638f46, type: 3}
       propertyPath: m_Name
       value: Enemy (4)
@@ -35148,6 +35164,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 23875943}
     m_Modifications:
+    - target: {fileID: 2009368580, guid: d9710e6d4d1c45d4783c7f9639638f46, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2009368580, guid: d9710e6d4d1c45d4783c7f9639638f46, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 3617545583242582945, guid: d9710e6d4d1c45d4783c7f9639638f46, type: 3}
       propertyPath: m_Name
       value: Enemy (1)
@@ -35440,8 +35464,8 @@ PolygonCollider2D:
   m_Points:
     m_Paths:
     - - {x: 51.890854, y: 8.214972}
-      - {x: 51.754227, y: 24.115314}
-      - {x: -23.6194, y: 23.728827}
+      - {x: 51.829727, y: 30.004997}
+      - {x: -23.317368, y: 30.600122}
       - {x: -23.673973, y: -4.4353194}
       - {x: -23.633694, y: -5.543516}
       - {x: 51.920082, y: -4.971303}
@@ -35633,6 +35657,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 23875943}
     m_Modifications:
+    - target: {fileID: 2009368580, guid: d9710e6d4d1c45d4783c7f9639638f46, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2009368580, guid: d9710e6d4d1c45d4783c7f9639638f46, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 3617545583242582945, guid: d9710e6d4d1c45d4783c7f9639638f46, type: 3}
       propertyPath: m_Name
       value: Enemy (2)
@@ -35839,6 +35871,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5929617525888955169, guid: 7df3af9b27afd1449b604c65f78c086a, type: 3}
+      propertyPath: lvl2
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5929617525888955169, guid: 7df3af9b27afd1449b604c65f78c086a, type: 3}
+      propertyPath: lvl3
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5929617525888955169, guid: 7df3af9b27afd1449b604c65f78c086a, type: 3}
       propertyPath: amountOfCollecteables
       value: 
       objectReference: {fileID: 636730767}
@@ -35912,8 +35952,8 @@ PolygonCollider2D:
   m_Points:
     m_Paths:
     - - {x: 29.583542, y: 7.3688316}
-      - {x: 29.754593, y: 24.115314}
-      - {x: -23.6194, y: 23.728827}
+      - {x: 29.98111, y: 30.60907}
+      - {x: -23.090836, y: 30.67563}
       - {x: -23.673973, y: -4.4353194}
       - {x: -23.633694, y: -5.543516}
       - {x: 29.689674, y: -5.4328337}
@@ -36396,6 +36436,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 23875943}
     m_Modifications:
+    - target: {fileID: 2009368580, guid: d9710e6d4d1c45d4783c7f9639638f46, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2009368580, guid: d9710e6d4d1c45d4783c7f9639638f46, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 3617545583242582945, guid: d9710e6d4d1c45d4783c7f9639638f46, type: 3}
       propertyPath: m_Name
       value: Enemy (3)
@@ -37025,6 +37073,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 23875943}
     m_Modifications:
+    - target: {fileID: 2009368580, guid: d9710e6d4d1c45d4783c7f9639638f46, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2009368580, guid: d9710e6d4d1c45d4783c7f9639638f46, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 3617545583242582945, guid: d9710e6d4d1c45d4783c7f9639638f46, type: 3}
       propertyPath: m_Name
       value: Enemy
@@ -38492,6 +38548,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CapaDegradadoFondo
       objectReference: {fileID: 0}
+    - target: {fileID: 4059991631981123366, guid: 579760c876f929b40bf684336010eaf9, type: 3}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 787035367}
     - target: {fileID: 4059991631981123367, guid: 579760c876f929b40bf684336010eaf9, type: 3}
       propertyPath: m_RootOrder
       value: 16

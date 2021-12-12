@@ -559,8 +559,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.0045148134}
-  m_Size: {x: 1, y: 3.255152}
+  m_Offset: {x: 0, y: -0.12071824}
+  m_Size: {x: 1, y: 3.0046859}
   m_Direction: 0
 --- !u!50 &8774050212189236549
 Rigidbody2D:
@@ -597,10 +597,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
   speed: 7
-  jumpForce: 15
+  jumpForce: 20
   slideSpeed: 7
   wallJumpLerp: 5
-  dashSpeed: 40
+  dashSpeed: 20
   canMove: 1
   wallGrab: 0
   wallJumped: 0
@@ -638,7 +638,7 @@ MonoBehaviour:
   onLeftWall: 0
   wallSide: 0
   collisionRadius: 0.25
-  bottomOffset: {x: 0, y: -1.77}
+  bottomOffset: {x: 0, y: -1.8}
   rightOffset: {x: 0.67, y: 0}
   leftOffset: {x: -0.67, y: 0}
 --- !u!114 &8774050212189236538

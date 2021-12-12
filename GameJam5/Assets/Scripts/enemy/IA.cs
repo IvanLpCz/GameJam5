@@ -30,6 +30,7 @@ public class IA : MonoBehaviour
     [Header("weapons")]
     public GameObject weaponATK;
     public GameObject weaponIdle;
+    public GameObject particleShoot;
 
     [Space]
     [Header("sounds")]
@@ -154,6 +155,7 @@ public class IA : MonoBehaviour
         hasShoot = true;
         if (timeSinceLastAttack > fireRate)
         {
+            particleShoot.SetActive(false);
             PoolBullet();
             animController.SetBool("shooting", true);
         }
@@ -165,6 +167,7 @@ public class IA : MonoBehaviour
 
         if (bullet != null)
         {
+            particleShoot.SetActive(true);
             bullet.transform.position = aimPos.position;
             bullet.transform.rotation = aimPos.rotation;
             audioS.PlayOneShot(shoot, soundVolume);

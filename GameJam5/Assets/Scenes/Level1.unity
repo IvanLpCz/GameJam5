@@ -1373,8 +1373,8 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 8.965338, y: 17.416595}
-      - {x: -21.446049, y: 17.734732}
+    - - {x: 8.828749, y: 20.967836}
+      - {x: -20.945225, y: 20.876213}
       - {x: -21.231724, y: 1.5854797}
       - {x: 8.820961, y: 1.8381653}
       - {x: 8.812895, y: 7.6492796}
@@ -1930,6 +1930,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5929617525888955169, guid: 7df3af9b27afd1449b604c65f78c086a, type: 3}
+      propertyPath: lvl1
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5929617525888955169, guid: 7df3af9b27afd1449b604c65f78c086a, type: 3}
       propertyPath: amountOfCollecteables
       value: 
       objectReference: {fileID: 1847618560}
@@ -2003,8 +2007,8 @@ PolygonCollider2D:
   m_Points:
     m_Paths:
     - - {x: -6.000305, y: 8.464083}
-      - {x: -5.8741016, y: 16.0874}
-      - {x: -22.246323, y: 16.723352}
+      - {x: -6.10174, y: 19.183352}
+      - {x: -22.473965, y: 19.181902}
       - {x: -22.498814, y: 1.5627842}
       - {x: -6.078491, y: 1.8381653}
       - {x: -6.0113087, y: 7.799779}
@@ -2604,8 +2608,8 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 31.08547, y: 22.858484}
-      - {x: -21.09026, y: 23.058678}
+    - - {x: 31.49523, y: 24.861748}
+      - {x: -21.044735, y: 24.014782}
       - {x: -21.231724, y: 1.5854797}
       - {x: 1.1144257, y: 1.5527363}
       - {x: 15.073135, y: 1.1051464}
@@ -3752,8 +3756,8 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 2.1124172, y: 17.710188}
-      - {x: -22.19038, y: 17.685112}
+    - - {x: 2.0213604, y: 22.672817}
+      - {x: -21.962734, y: 22.465628}
       - {x: -22.472279, y: 1.3869915}
       - {x: 1.6662827, y: 1.5527363}
       - {x: 1.837637, y: 7.574527}
@@ -28475,19 +28479,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8930793594591633291, guid: 7fd76f71d9afd8248a0e4adbcb963f5a, type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[0].x
-      value: 26.44097
+      value: 26.545855
       objectReference: {fileID: 0}
     - target: {fileID: 8930793594591633291, guid: 7fd76f71d9afd8248a0e4adbcb963f5a, type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[0].y
-      value: 16.90423
+      value: 17.67338
       objectReference: {fileID: 0}
     - target: {fileID: 8930793594591633291, guid: 7fd76f71d9afd8248a0e4adbcb963f5a, type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[1].x
-      value: -21.256588
+      value: -21.186665
       objectReference: {fileID: 0}
     - target: {fileID: 8930793594591633291, guid: 7fd76f71d9afd8248a0e4adbcb963f5a, type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[1].y
-      value: 16.6927
+      value: 17.566732
       objectReference: {fileID: 0}
     - target: {fileID: 8930793594591633291, guid: 7fd76f71d9afd8248a0e4adbcb963f5a, type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[2].x
@@ -30268,18 +30272,6 @@ PrefabInstance:
     - target: {fileID: 8774050212189236537, guid: 3b895b4ce5366f142a6e8f7e7828363b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8774050212189236539, guid: 3b895b4ce5366f142a6e8f7e7828363b, type: 3}
-      propertyPath: bottomOffset.y
-      value: -1.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 8774050212189236540, guid: 3b895b4ce5366f142a6e8f7e7828363b, type: 3}
-      propertyPath: dashSpeed
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 8774050212189236540, guid: 3b895b4ce5366f142a6e8f7e7828363b, type: 3}
-      propertyPath: jumpForce
-      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8774050212189236548, guid: 3b895b4ce5366f142a6e8f7e7828363b, type: 3}
       propertyPath: m_Name
